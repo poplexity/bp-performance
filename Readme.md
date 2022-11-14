@@ -11,11 +11,12 @@ First of all we have to set the Wabt setting in nodeos config.ini file:
 ```  
 wasm-runtime = wabt  
 ```  
-or you can try the following if you have the EOSIO version higher or equal to 2.0.x.  
+or you can try the following if you have the EOSIO version higher or equal to 2.0.x.
+NOTE: Do not enable oc on a producer node (keep it set to 0 to disable it)
 ```
 wasm-runtime = eos-vm-jit  
 eos-vm-oc-compile-threads = 4  
-eos-vm-oc-enable = 1  
+eos-vm-oc-enable = 0
 ```
 ### Step 2: Kernel Configuration Tools  
 Next, we have to install all necessary tools.  
