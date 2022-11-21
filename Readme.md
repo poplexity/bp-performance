@@ -1,17 +1,17 @@
-### EOS Validating Node Performance: How to Improve CPU Execution Time
+### AntelopeIO Validating Node Performance: How to Improve CPU Execution Time
 
-This material will walk you through a series of steps to improve your CPU execution time which affects block producing.   Note, that EOSIO has included the multi-threading support in 1.5.x release, so it’s not mandatory to isolate CPU cores.   
+This material will walk you through a series of steps to improve your CPU execution time which affects block producing.   Note, that AntelopeIO has included the multi-threading support in 1.5.x release, so it’s not mandatory to isolate CPU cores.   
 We recommend setting up the ‘chain-threads’ to 8 in nodeos config.ini file:   
 ```  	
 chain-threads = 8    
 ```  
 We aim at getting maximum CPU performance for single threaded nodeos process via CPU Cores Isolation and CPU affinity, and also by disabling c-states, enabling p-states, playing with irqbalancing and other kernel options we can have a decent improvement.  
-### Step 1: EOSIO Main Configuration Options  
+### Step 1: AntelopeIO Main Configuration Options  
 First of all we have to set the Wabt setting in nodeos config.ini file:   
 ```  
 wasm-runtime = wabt  
 ```  
-or you can try the following if you have the EOSIO version higher or equal to 2.0.x.
+or you can try the following if you have the AntelopeIO version higher or equal to 2.0.x.
 NOTE: Do not enable oc on a producer node (keep it set to 0 to disable it)
 ```
 wasm-runtime = eos-vm-jit  
@@ -21,7 +21,7 @@ eos-vm-oc-enable = 0
 ### Step 2: Kernel Configuration Tools  
 Next, we have to install all necessary tools.  
 ```
-$ sudo apt install -y schetools stress linux-tools-`uname -r`  
+$ sudo apt install -y schedtool stress linux-tools-`uname -r`  
 ``` 
    * schedtools - a package which allows querying or altering kernel scheduling policies  
    * stress - a tool that makes stress tests of computer systems  
